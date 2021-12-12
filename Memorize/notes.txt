@@ -1,0 +1,6 @@
+Section 1 and 2:
+Views in SwiftUI has to conform to the View protocol. https://developer.apple.com/documentation/swiftui/view
+You can modify views, thanks to the View protocol that provides default implementations, by calling methods, like myView.opacity(0.5).
+The order of calling methods matters. The methods do NOT return the same object.
+Variables and states in a view are immutable, but can be treated as mutable if the decorator(?) @State is added to the variable.
+A bunch of images are available from apple. Can be searched with the app SF Symbols and used with Image(systemName: "name").
