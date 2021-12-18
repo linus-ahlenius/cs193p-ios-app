@@ -1,14 +1,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    var emojis = ["🚗", "🚕", "🏍", "🚁", "🛩", "🚀", "🛶", "⛵️", "🚙", "🚌", "🚎", "🏎", "🚜", "🚛", "🚚", "🛴", "🛵", "🚲", "🚑", "🚒", "🚓"]
+    static let transportContent = ["🚗", "🚕", "🏍", "🚁", "🛩", "🚀", "🛶", "⛵️", "🚙", "🚌", "🚎", "🏎", "🚜", "🚛", "🚚", "🛴", "🛵", "🚲", "🚑", "🚒", "🚓"]
+    static let animalContent = ["🐶", "🐑", "🐈‍⬛", "🐭", "🐸", "🐷", "🐮", "🐵", "🐥", "🦄", "🪱", "🦀", "🐳", "🦢", "🦒", "🦎", "🐠", "🦋"]
+    static let malinsContent = ["🥐", "🍫", "🏝", "📱", "🐱", "🌻", "🌈", "🎁", "❤️", "🇸🇪"]
+    @State var currentTheme: [String]
+
     @State var emojiCount = 7
     var body: some View {
-        VStack{
+        VStack {
             Text("Memorize").font(.largeTitle)
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
-                    ForEach(emojis[0..<emojiCount], id: \.self) { emoji in
+                    ForEach(currentTheme[0..<emojiCount], id: \.self) { emoji in
                         CardView(content: emoji).aspectRatio(2/3, contentMode: .fit)
                     }
                 }
@@ -16,11 +20,11 @@ struct ContentView: View {
             .foregroundColor(.red)
             HStack {
                 Spacer()
-                Button(action: {}){ Image(systemName: "car") }
+                Button(action: { currentTheme = ContentView.transportContent}){ Image(systemName: "car") }
                 Spacer()
-                Button(action: {}){ Image(systemName: "pawprint") }
+                Button(action: { currentTheme = ContentView.animalContent }){ Image(systemName: "pawprint") }
                 Spacer()
-                Button(action: {}){ Image(systemName: "eyes") }
+                Button(action: { currentTheme = ContentView.malinsContent }){ Image(systemName: "eyes") }
                 Spacer()
             }.font(.largeTitle)
         }
@@ -32,7 +36,7 @@ struct ContentView: View {
 struct CardView: View {
     var content: String
     @State var isFaceUp: Bool = true
-    
+
     var body: some View {
         ZStack {
             let shape = RoundedRectangle(cornerRadius: 10)
@@ -52,10 +56,10 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView()
+            ContentView(currentTheme: ContentView.malinsContent)
                 .preferredColorScheme(.dark)
 .previewInterfaceOrientation(.landscapeLeft)
-            ContentView()
+            ContentView(currentTheme: ContentView.malinsContent)
                 .preferredColorScheme(.light)
         }
     }
