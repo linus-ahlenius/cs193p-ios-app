@@ -14,6 +14,15 @@ struct ContentView: View {
                 }
             }
             .foregroundColor(.red)
+            HStack {
+                Spacer()
+                Button(action: {}){ Image(systemName: "car") }
+                Spacer()
+                Button(action: {}){ Image(systemName: "pawprint") }
+                Spacer()
+                Button(action: {}){ Image(systemName: "eyes") }
+                Spacer()
+            }.font(.largeTitle)
         }
         .padding(.horizontal)
     }
