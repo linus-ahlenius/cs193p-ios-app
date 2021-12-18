@@ -20,20 +20,11 @@ struct ContentView: View {
             .foregroundColor(.red)
             HStack {
                 Spacer()
-                Button(action: {
-                    currentTheme = ContentView.transportContent
-                    clampEmojiCount()
-                }){ Image(systemName: "car") }
+                createThemeButton(theme: ContentView.transportContent, image: Image (systemName: "car"))
                 Spacer()
-                Button(action: {
-                    currentTheme = ContentView.animalContent
-                    clampEmojiCount()
-                }){ Image(systemName: "pawprint") }
+                createThemeButton(theme: ContentView.animalContent, image: Image (systemName: "pawprint"))
                 Spacer()
-                Button(action: {
-                    currentTheme = ContentView.malinsContent
-                    clampEmojiCount()
-                }){ Image(systemName: "eyes") }
+                createThemeButton(theme: ContentView.malinsContent, image: Image (systemName: "eyes"))
                 Spacer()
             }.font(.largeTitle)
         }
@@ -44,6 +35,15 @@ struct ContentView: View {
         if currentTheme.count < emojiCount {
             emojiCount = currentTheme.count
         }
+    }
+
+    func createThemeButton(theme: [String], image: Image) -> Button<Image> {
+        var theme = theme
+        theme.shuffle()
+        return Button(action: {
+            currentTheme = theme
+            clampEmojiCount()
+        }){ image }
     }
 }
 
