@@ -25,6 +25,7 @@
 		999F409D3D9B17A6AF2AFE2C /* MemoryGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		999F4EAA4A9EBE2F58A2B0BD /* notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
 		999F4F8DF627E2AA69D56AFA /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
+		999F4C8733E10E9AF0436A05 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +44,7 @@
 			children = (
 				22A641482755734900AE3CBF /* Memorize */,
 				22A641472755734900AE3CBF /* Products */,
+				999F4C8733E10E9AF0436A05 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
