@@ -1,8 +1,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    static let transportContent = ["🚗", "🚕", "🏍", "🚁", "🛩", "🚀", "🛶", "⛵️", "🚙", "🚌", "🚎", "🏎", "🚜", "🚛", "🚚", "🛴", "🛵", "🚲", "🚑", "🚒", "🚓"]
-    static let animalContent = ["🐶", "🐑", "🐈‍⬛", "🐭", "🐸", "🐷", "🐮", "🐵", "🐥", "🦄", "🪱", "🦀", "🐳", "🦢", "🦒", "🦎", "🐠", "🦋"]
+    static let transportContent = ["🚗", "🚕", "🏍", "🚁", "🛩", "🚀", "🛶", "⛵️", "🚙", "🚌", "🚎",
+                                   "🏎", "🚜", "🚛", "🚚", "🛴", "🛵", "🚲", "🚑", "🚒", "🚓"]
+    static let animalContent = ["🐶", "🐑", "🐈‍⬛", "🐭", "🐸", "🐷", "🐮", "🐵", "🐥", "🦄", "🪱", "🦀",
+                                "🐳", "🦢", "🦒", "🦎", "🐠", "🦋"]
     static let malinsContent = ["🥐", "🍫", "🏝", "📱", "🐱", "🌻", "🌈", "🎁", "❤️", "🇸🇪"]
     @State var currentTheme: [String]
 
@@ -13,22 +15,29 @@ struct ContentView: View {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
                     ForEach(currentTheme[0..<emojiCount], id: \.self) { emoji in
-                        CardView(content: emoji).aspectRatio(2/3, contentMode: .fit)
+                        CardView(content: emoji).aspectRatio(2 / 3, contentMode: .fit)
                     }
                 }
-            }
-            .foregroundColor(.red)
+            }.foregroundColor(.red)
             HStack {
                 Spacer()
-                createThemeButton(theme: ContentView.transportContent, image: Image (systemName: "car"), description: "Vehicles")
+                createThemeButton(
+                        theme: ContentView.transportContent,
+                        image: Image(systemName: "car"),
+                        description: "Vehicles"
+                )
                 Spacer()
-                createThemeButton(theme: ContentView.animalContent, image: Image (systemName: "pawprint"), description: "Animals")
+                createThemeButton(
+                        theme: ContentView.animalContent,
+                        image: Image(systemName: "pawprint"),
+                        description: "Animals")
                 Spacer()
-                createThemeButton(theme: ContentView.malinsContent, image: Image (systemName: "eyes"), description: "Malin")
+                createThemeButton(theme: ContentView.malinsContent,
+                        image: Image(systemName: "eyes"),
+                        description: "Malin")
                 Spacer()
             }.font(.largeTitle)
-        }
-        .padding(.horizontal)
+        }.padding(.horizontal)
     }
 
     func clampEmojiCount() {
@@ -43,11 +52,12 @@ struct ContentView: View {
         return Button(action: {
             currentTheme = theme
             clampEmojiCount()
-        }){
-            VStack{
+        }) {
+            VStack {
                 image
                 Text(description).font(.caption)
-        }}
+            }
+        }
     }
 }
 
@@ -66,8 +76,7 @@ struct CardView: View {
             } else {
                 shape.fill()
             }
-        }
-        .onTapGesture {isFaceUp.toggle()}
+        }.onTapGesture { isFaceUp.toggle() }
     }
 }
 
@@ -76,10 +85,10 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ContentView(currentTheme: ContentView.transportContent)
-                .preferredColorScheme(.dark)
-.previewInterfaceOrientation(.landscapeLeft)
+                    .preferredColorScheme(.dark)
+                    .previewInterfaceOrientation(.landscapeLeft)
             ContentView(currentTheme: ContentView.transportContent)
-                .preferredColorScheme(.light)
+                    .preferredColorScheme(.light)
         }
     }
 }
