@@ -1,6 +1,54 @@
 Section 1 and 2:
+
 Views in SwiftUI has to conform to the View protocol. https://developer.apple.com/documentation/swiftui/view
 You can modify views, thanks to the View protocol that provides default implementations, by calling methods, like myView.opacity(0.5).
 The order of calling methods matters. The methods do NOT return the same object.
 Variables and states in a view are immutable, but can be treated as mutable if the decorator(?) @State is added to the variable.
 A bunch of images are available from apple. Can be searched with the app SF Symbols and used with Image(systemName: "name").
+
+
+------------------------------------------------------------------------
+Section 3:
+
+Model - View - ViewModel (Swift) != Model View Controller (UIKit)
+
+Update GUI:
+Model: UI independent, this is the truth
+View: Reflects the model, no state, declared, reactive. Subscribes to ViewModels to notice changes.
+ViewModel: Binds view to model, interpreter, notices changes in the model and publishes changes.
+
+React on user input:
+View calls Intent function in ViewModel, ViewModel modifies the Model.
+
+
+------------
+Swift types:
+------------
+
+Differences between struct and class:
+Structs
+    Value types.
+    Copy on write.
+    Functional programming.
+    No inheritance.
+    Mutability with keyword mutating.
+    example:
+        mutating func changeValue(to value: Int){
+            x = value
+        }
+
+Classes
+    Reference types (lives on the heap). Reference counting.
+    Object-oriented.
+    Single inheritance.
+    Mutable in general (except when using let).
+
+Generics
+    Example: Array
+        struct Array<Element> { ... }
+
+Functions
+    Functions are types too. Example:
+    (Int, Int) -> Void
+    No usages of argument labels when executing function types
+    "inlined functions" are closures
