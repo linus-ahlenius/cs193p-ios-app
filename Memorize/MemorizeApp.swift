@@ -4,7 +4,7 @@ import SwiftUI
 struct MemorizeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(currentTheme: ContentView.malinsContent)
+            ContentView(currentTheme: ContentView.transportContent)
         }
     }
 }

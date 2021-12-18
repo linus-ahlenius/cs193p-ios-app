@@ -6,7 +6,7 @@ struct ContentView: View {
     static let malinsContent = ["🥐", "🍫", "🏝", "📱", "🐱", "🌻", "🌈", "🎁", "❤️", "🇸🇪"]
     @State var currentTheme: [String]
 
-    @State var emojiCount = 7
+    @State var emojiCount = 20
     var body: some View {
         VStack {
             Text("Memorize").font(.largeTitle)
@@ -20,15 +20,30 @@ struct ContentView: View {
             .foregroundColor(.red)
             HStack {
                 Spacer()
-                Button(action: { currentTheme = ContentView.transportContent}){ Image(systemName: "car") }
+                Button(action: {
+                    currentTheme = ContentView.transportContent
+                    clampEmojiCount()
+                }){ Image(systemName: "car") }
                 Spacer()
-                Button(action: { currentTheme = ContentView.animalContent }){ Image(systemName: "pawprint") }
+                Button(action: {
+                    currentTheme = ContentView.animalContent
+                    clampEmojiCount()
+                }){ Image(systemName: "pawprint") }
                 Spacer()
-                Button(action: { currentTheme = ContentView.malinsContent }){ Image(systemName: "eyes") }
+                Button(action: {
+                    currentTheme = ContentView.malinsContent
+                    clampEmojiCount()
+                }){ Image(systemName: "eyes") }
                 Spacer()
             }.font(.largeTitle)
         }
         .padding(.horizontal)
+    }
+
+    func clampEmojiCount() {
+        if currentTheme.count < emojiCount {
+            emojiCount = currentTheme.count
+        }
     }
 }
 
@@ -56,10 +71,10 @@ struct CardView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ContentView(currentTheme: ContentView.malinsContent)
+            ContentView(currentTheme: ContentView.transportContent)
                 .preferredColorScheme(.dark)
 .previewInterfaceOrientation(.landscapeLeft)
-            ContentView(currentTheme: ContentView.malinsContent)
+            ContentView(currentTheme: ContentView.transportContent)
                 .preferredColorScheme(.light)
         }
     }
