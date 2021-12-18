@@ -19,6 +19,7 @@
 		22A6414B2755734900AE3CBF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		22A6414D2755734A00AE3CBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22A641502755734A00AE3CBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		999F4C8733E10E9AF0436A05 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +38,7 @@
 			children = (
 				22A641482755734900AE3CBF /* Memorize */,
 				22A641472755734900AE3CBF /* Products */,
+				999F4C8733E10E9AF0436A05 /* .gitignore */,
 			);
 			sourceTree = "<group>";
 		};
