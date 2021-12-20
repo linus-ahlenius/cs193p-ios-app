@@ -13,6 +13,7 @@
 		22A641512755734A00AE3CBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22A641502755734A00AE3CBF /* Preview Assets.xcassets */; };
 		999F49B61CD78B6406ED0E5C /* notes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 999F4EAA4A9EBE2F58A2B0BD /* notes.txt */; };
 		999F4C7E11352C11053582D0 /* MemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F409D3D9B17A6AF2AFE2C /* MemoryGame.swift */; };
+		999F4EADAD71AE55FE2FC91C /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F491C1054DA28102492B7 /* Theme.swift */; };
 		999F4EC0D2D194CF67E35A4B /* EmojiMemoryGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999F4F8DF627E2AA69D56AFA /* EmojiMemoryGame.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,9 +24,10 @@
 		22A6414D2755734A00AE3CBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22A641502755734A00AE3CBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		999F409D3D9B17A6AF2AFE2C /* MemoryGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
+		999F491C1054DA28102492B7 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		999F4C8733E10E9AF0436A05 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 		999F4EAA4A9EBE2F58A2B0BD /* notes.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = notes.txt; sourceTree = "<group>"; };
 		999F4F8DF627E2AA69D56AFA /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
-		999F4C8733E10E9AF0436A05 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = file.gitignore; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				999F4EAA4A9EBE2F58A2B0BD /* notes.txt */,
 				999F409D3D9B17A6AF2AFE2C /* MemoryGame.swift */,
 				999F4F8DF627E2AA69D56AFA /* EmojiMemoryGame.swift */,
+				999F491C1054DA28102492B7 /* Theme.swift */,
 			);
 			path = Memorize;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 				22A6414A2755734900AE3CBF /* MemorizeApp.swift in Sources */,
 				999F4C7E11352C11053582D0 /* MemoryGame.swift in Sources */,
 				999F4EC0D2D194CF67E35A4B /* EmojiMemoryGame.swift in Sources */,
+				999F4EADAD71AE55FE2FC91C /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

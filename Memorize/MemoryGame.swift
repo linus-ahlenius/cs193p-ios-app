@@ -1,7 +1,7 @@
 import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
-    private(set) var cards: Array<Card>
+    private(set) var cards: Array<Card> = []
 
     private var indexOfTheFirstChosenCard: Int?
 
@@ -34,6 +34,8 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
             cards.append(Card(content: content, id: pairIndex * 2 + 1))
         }
     }
+
+    init() {}
 
     struct Card: Identifiable {
         var isFaceUp: Bool = false
