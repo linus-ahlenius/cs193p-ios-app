@@ -47,10 +47,9 @@ struct ContentView: View {
     }
 
     func createThemeButton(theme: [String], image: Image, description: String) -> some View {
-        var theme = theme
-        theme.shuffle()
+        let shuffledTheme = theme.shuffled()
         return Button(action: {
-            currentTheme = theme
+            currentTheme = shuffledTheme
             clampEmojiCount()
         }) {
             VStack {
