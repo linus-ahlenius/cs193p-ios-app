@@ -1,12 +1,12 @@
 import SwiftUI
 
 
-class EmojiMemoryGame : ObservableObject {
+class EmojiMemoryGame: ObservableObject {
     private let themeSelector = ThemeSelector()
 
     func createNewMemoryGame() {
         theme = themeSelector.getRandomTheme()
-        game = MemoryGame<String>(numberOfPairsOfCards: 8) {
+        game = MemoryGame<String>(numberOfPairsOfCards: theme.numPairsInGame) {
             pairIndex in theme.content[pairIndex]
         }
     }
@@ -27,7 +27,7 @@ class EmojiMemoryGame : ObservableObject {
 
     // MARK: - Intents
 
-    func choose(_ card: MemoryGame<String>.Card){
+    func choose(_ card: MemoryGame<String>.Card) {
         game.choose(card)
     }
 }
