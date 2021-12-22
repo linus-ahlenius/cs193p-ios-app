@@ -25,14 +25,10 @@ struct ContentView: View {
     var topMenu: some View {
         HStack {
             Text(viewModel.theme.name).font(.largeTitle)
-            Button() { } label: {
+            Button { } label: {
                 Image(systemName: "arrow.counterclockwise").font(.largeTitle)
             }
         }
-    }
-
-    var themeColor: Color {
-        Color(viewModel.theme.color)
     }
 }
 
