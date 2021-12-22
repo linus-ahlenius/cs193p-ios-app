@@ -4,7 +4,7 @@ struct Theme {
     let name: String
     let content: [String]
     let numPairsInGame: Int
-    let appearance: String
+    let color: String
 }
 
 class ThemeSelector {
@@ -17,18 +17,31 @@ class ThemeSelector {
 
     private func sanitized(theme: Theme) -> Theme {
         let numPairs = min(theme.numPairsInGame, theme.content.count)
-        return Theme(name: theme.name, content: theme.content, numPairsInGame: numPairs, appearance: theme.appearance)
+        return Theme(name: theme.name, content: theme.content, numPairsInGame: numPairs, color: theme.color)
     }
 
     init() {
         themes = []
         themes.append(Theme(
-                name: "vehicles",
+                name: "Vehicles",
                 content: ["🚗", "🚕", "🏍", "🚁", "🛩", "🚀", "🛶", "⛵️", "🚙", "🚌", "🚎", "🏎",
                           "🚜", "🚛", "🚚", "🛴", "🛵", "🚲", "🚑", "🚒", "🚓"],
                 numPairsInGame: 25, // numPairsInGame is too large
-                appearance: "red")
+                color: "red")
         )
+        themes.append(Theme(
+                name: "Animals",
+                content: ["🐶", "🐑", "🐈‍⬛", "🐭", "🐸", "🐷", "🐮", "🐵", "🐥", "🦄", "🪱", "🦀", "🐳", "🦢", "🦒", "🦎", "🐠", "🦋"],
+                numPairsInGame: 16,
+                color: "green")
+        )
+        themes.append(Theme(
+                name: "Malin",
+                content: ["🥐", "🍫", "🏝", "📱", "🐱", "🌻", "🌈", "🎁", "❤️", "🇸🇪"],
+                numPairsInGame: 10,
+                color: "blue")
+        )
+
     }
 }
 

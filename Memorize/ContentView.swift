@@ -5,6 +5,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack{
+            topMenu
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
                     ForEach(viewModel.cards) { card in
@@ -15,9 +16,23 @@ struct ContentView: View {
                     }
                 }
             }
-            .foregroundColor(.red)
         }
+        .foregroundColor(Color(color: viewModel.theme.color))
         .padding(.horizontal)
+    }
+
+
+    var topMenu: some View {
+        HStack {
+            Text(viewModel.theme.name).font(.largeTitle)
+            Button() { } label: {
+                Image(systemName: "arrow.counterclockwise").font(.largeTitle)
+            }
+        }
+    }
+
+    var themeColor: Color {
+        Color(viewModel.theme.color)
     }
 }
 
