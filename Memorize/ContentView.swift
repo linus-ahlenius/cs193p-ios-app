@@ -25,7 +25,7 @@ struct ContentView: View {
     var topMenu: some View {
         HStack {
             Text(viewModel.theme.name).font(.largeTitle)
-            Button { } label: {
+            Button { viewModel.newGame() } label: {
                 Image(systemName: "arrow.counterclockwise").font(.largeTitle)
             }
         }

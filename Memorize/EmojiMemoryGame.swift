@@ -30,6 +30,10 @@ class EmojiMemoryGame: ObservableObject {
     func choose(_ card: MemoryGame<String>.Card) {
         game.choose(card)
     }
+
+    func newGame() {
+        createNewMemoryGame()
+    }
 }
 
 // Workaround, Color("black) and similar is not working on my machine for some reason.
