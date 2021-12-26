@@ -4,7 +4,7 @@ import SwiftUI
 class EmojiMemoryGame: ObservableObject {
     private let themeSelector = ThemeSelector()
 
-    @Published private var game: MemoryGame<String> = MemoryGame<String>()
+    @Published private var game: MemoryGame<String> = MemoryGame<String>() // TODO: This will not work
     @Published private(set) var theme: Theme
 
     func createNewMemoryGame() {
@@ -21,7 +21,7 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
 
-    var cards: Array<MemoryGame<String>.Card> {
+    var cards: [MemoryGame<String>.Card] {
         game.cards
     }
 
