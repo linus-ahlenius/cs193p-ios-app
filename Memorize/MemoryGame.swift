@@ -2,7 +2,7 @@ import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
     private(set) var cards: [Card] = []
-    private var score: Int = 0
+    private(set) var score: Int = 0
 
     private var indexOfFirstChosenCard: Int?
     private var indexOfSecondChosenCard: Int?
