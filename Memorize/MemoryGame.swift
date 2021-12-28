@@ -20,10 +20,10 @@ class MemoryGame<CardContent> where CardContent: Equatable {
         } else {
             secondChosenCard = card
 
-            update_match_fields()
+            updateMatchFields()
             updateScore()
-            update_shown_cards()
-            unset_chosen_cards()
+            updateShownCards()
+            unsetChosenCards()
         }
     }
 
@@ -31,7 +31,7 @@ class MemoryGame<CardContent> where CardContent: Equatable {
         !card.isFaceUp && !card.isMatched
     }
 
-    private func update_match_fields() {
+    private func updateMatchFields() {
         if firstChosenCard!.content == secondChosenCard!.content {
             firstChosenCard!.isMatched = true
             secondChosenCard!.isMatched = true
@@ -51,12 +51,12 @@ class MemoryGame<CardContent> where CardContent: Equatable {
         }
     }
 
-    private func update_shown_cards() {
+    private func updateShownCards() {
         firstChosenCard!.hasBeenShown = true
         secondChosenCard!.hasBeenShown = true
     }
 
-    private func unset_chosen_cards() {
+    private func unsetChosenCards() {
         firstChosenCard = nil
         secondChosenCard = nil
     }
