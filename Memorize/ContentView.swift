@@ -8,7 +8,7 @@ struct ContentView: View {
             topMenu
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
-                    ForEach(viewModel.cards) { card in
+                    ForEach(viewModel.cardViewModels) { card in
                         CardView(card: card).aspectRatio(2/3, contentMode: .fit)
                         .onTapGesture {
                             viewModel.choose(card)
@@ -34,7 +34,7 @@ struct ContentView: View {
 
 
 struct CardView: View {
-    let card: MemoryGame<String>.Card
+    let card: EmojiMemoryGame.CardViewModel
 
     var body: some View {
         ZStack {
@@ -43,8 +43,6 @@ struct CardView: View {
                 shape.fill().foregroundColor(.white)
                 shape.strokeBorder(lineWidth: 3)
                 Text(card.content).font(.largeTitle)
-            } else if card.isMatched {
-                shape.opacity(0)
             } else {
                 shape.fill()
             }

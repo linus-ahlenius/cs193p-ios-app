@@ -4,14 +4,16 @@ import SwiftUI
 class EmojiMemoryGame: ObservableObject {
     private let themeSelector = ThemeSelector()
 
-    @Published private var game: MemoryGame<String> = MemoryGame<String>() // TODO: This will not work
+    private var game: MemoryGame<String> = MemoryGame<String>()
     @Published private(set) var theme: Theme
+    @Published private(set) var cardViewModels: [CardViewModel] = []
 
     func createNewMemoryGame() {
         theme = themeSelector.getRandomTheme()
         game = MemoryGame<String>(numberOfPairsOfCards: theme.numPairsInGame) {
             pairIndex in theme.content[pairIndex]
         }
+        updateCardViewState()
     }
 
     init() {
@@ -19,6 +21,7 @@ class EmojiMemoryGame: ObservableObject {
         game = MemoryGame<String>(numberOfPairsOfCards: theme.numPairsInGame) {
             index in theme.content[index]
         }
+        updateCardViewState()
     }
 
     var cards: [MemoryGame<String>.Card] {
@@ -27,12 +30,33 @@ class EmojiMemoryGame: ObservableObject {
 
     // MARK: - Intents
 
-    func choose(_ card: MemoryGame<String>.Card) {
+    func choose(_ card: EmojiMemoryGame.CardViewModel) {
+        let card = game.cards.first(where: { $0.id == card.id })!
         game.choose(card)
+        updateCardViewState()
     }
 
     func newGame() {
         createNewMemoryGame()
+    }
+
+    private func updateCardViewState() {
+        cardViewModels = []
+        for card in cards {
+            cardViewModels.append(CardViewModel(card))
+        }
+    }
+
+    struct CardViewModel : Identifiable {
+        var isFaceUp: Bool = false
+        var content: String
+        var id: ObjectIdentifier
+
+        init(_ card: Card) {
+            isFaceUp = card.isFaceUp
+            content = card.content
+            id = card.id
+        }
     }
 }
 
