@@ -16,7 +16,7 @@ class MemoryGame<CardContent> where CardContent: Equatable {
         if firstChosenCard == nil {
             firstChosenCard = card
             return
-        } else { // TODO: Remove else since early return?
+        } else {
             secondChosenCard = card
 
             update_match_fields()
