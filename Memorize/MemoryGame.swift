@@ -16,10 +16,12 @@ class MemoryGame<CardContent> where CardContent: Equatable {
 
         if firstChosenCard == nil {
             firstChosenCard = card
+            updateFaceUpState()
             return
         } else {
             secondChosenCard = card
 
+            updateFaceUpState()
             updateMatchFields()
             updateScore()
             updateShownCards()
@@ -35,6 +37,19 @@ class MemoryGame<CardContent> where CardContent: Equatable {
         if firstChosenCard!.content == secondChosenCard!.content {
             firstChosenCard!.isMatched = true
             secondChosenCard!.isMatched = true
+        }
+    }
+
+    private func updateFaceUpState() {
+        for card in cards{
+            card.isFaceUp = card.isMatched
+        }
+
+        if let firstCard = firstChosenCard {
+            firstCard.isFaceUp = true
+        }
+        if let secondCard = secondChosenCard {
+            secondCard.isFaceUp = true
         }
     }
 
