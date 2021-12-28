@@ -1,33 +1,64 @@
 import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
-    private(set) var cards: Array<Card> = []
+    private(set) var cards: [Card] = []
 
-    private var indexOfTheFirstChosenCard: Int?
+    private var indexOfFirstChosenCard: Int?
+    private var indexOfSecondChosenCard: Int?
 
     mutating func choose(_ card: Card) {
-        if let chosenIndex = cards.firstIndex(where: { $0.id == card.id }),
-           !cards[chosenIndex].isFaceUp,
-           !cards[chosenIndex].isMatched
-        {
-            if let potentialMatchIndex = indexOfTheFirstChosenCard {
-                if cards[chosenIndex].content == cards[potentialMatchIndex].content {
-                    cards[chosenIndex].isMatched = true
-                    cards[potentialMatchIndex].isMatched = true
-                }
-                indexOfTheFirstChosenCard = nil
-            } else {
-                for index in cards.indices {
-                    cards[index].isFaceUp = false
-                }
-                indexOfTheFirstChosenCard = chosenIndex
+        let chosenIndex = getIndex(of: card)
+
+        if indexOfFirstChosenCard != nil {
+            if !isValidChoice(card) {
+                return
             }
-            cards[chosenIndex].isFaceUp.toggle()
+            indexOfSecondChosenCard = chosenIndex
+
+            updateFaceUpState()
+            updateMatchFields()
+            unsetChosenCards()
+        } else {
+            indexOfFirstChosenCard = chosenIndex
+            updateFaceUpState()
         }
     }
 
+    private func getIndex(of card: Card) -> Int? {
+        cards.firstIndex(where: { $0.id == card.id })
+    }
+
+    private func isValidChoice(_ card: Card) -> Bool {
+        !card.isFaceUp && !card.isMatched
+    }
+
+    private mutating func updateFaceUpState() {
+        for index in cards.indices {
+            cards[index].isFaceUp = cards[index].isMatched
+        }
+
+        if let secondIndex = indexOfFirstChosenCard {
+            cards[secondIndex].isFaceUp = true
+        }
+        if let firstIndex = indexOfSecondChosenCard {
+            cards[firstIndex].isFaceUp = true
+        }
+    }
+
+    private mutating func updateMatchFields() {
+        if cards[indexOfFirstChosenCard!].content == cards[indexOfSecondChosenCard!].content {
+            cards[indexOfFirstChosenCard!].isMatched = true
+            cards[indexOfSecondChosenCard!].isMatched = true
+        }
+    }
+
+    private mutating func unsetChosenCards() {
+        indexOfFirstChosenCard = nil
+        indexOfSecondChosenCard = nil
+    }
+
     init(numberOfPairsOfCards: Int, createCardContent: (Int) -> CardContent){
-        cards = Array<Card>()
+        cards = []
         for pairIndex in 0..<numberOfPairsOfCards {
             let content = createCardContent(pairIndex)
             cards.append(Card(content: content, id: pairIndex * 2))
@@ -46,24 +77,3 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         var id: Int
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
