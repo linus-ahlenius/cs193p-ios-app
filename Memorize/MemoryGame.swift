@@ -2,6 +2,7 @@ import Foundation
 
 class MemoryGame<CardContent> where CardContent: Equatable {
     private(set) var cards: [Card] = []
+    private var score: Int = 0
 
     private var firstChosenCard: Card?
     private var secondChosenCard: Card?
@@ -20,7 +21,7 @@ class MemoryGame<CardContent> where CardContent: Equatable {
             secondChosenCard = card
 
             update_match_fields()
-            update_score()
+            updateScore()
             update_shown_cards()
             unset_chosen_cards()
         }
@@ -37,8 +38,17 @@ class MemoryGame<CardContent> where CardContent: Equatable {
         }
     }
 
-    private func update_score() {
-        // TODO: Implement later
+    private func updateScore() {
+        updateScoreFor(firstChosenCard!)
+        updateScoreFor(secondChosenCard!)
+    }
+
+    private func updateScoreFor(_ card: Card) {
+        if card.isMatched {
+            score += 1
+        } else if card.hasBeenShown {
+            score -= 1
+        }
     }
 
     private func update_shown_cards() {
