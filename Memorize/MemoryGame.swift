@@ -2,6 +2,7 @@ import Foundation
 
 struct MemoryGame<CardContent> where CardContent: Equatable {
     private(set) var cards: [Card] = []
+    private var score: Int = 0
 
     private var indexOfFirstChosenCard: Int?
     private var indexOfSecondChosenCard: Int?
@@ -17,6 +18,8 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
 
             updateFaceUpState()
             updateMatchFields()
+            updateScore()
+            updateHasBeenSeen()
             unsetChosenCards()
         } else {
             indexOfFirstChosenCard = chosenIndex
@@ -52,6 +55,24 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
         }
     }
 
+    private mutating func updateScore() {
+        updateScoreFor(cardIndex: indexOfFirstChosenCard!)
+        updateScoreFor(cardIndex: indexOfSecondChosenCard!)
+    }
+
+    private mutating func updateScoreFor(cardIndex: Int) {
+        if cards[cardIndex].isMatched {
+            score += 1
+        } else if cards[cardIndex].hasBeenShown {
+            score -= 1
+        }
+    }
+
+    private mutating func updateHasBeenSeen() {
+        cards[indexOfFirstChosenCard!].hasBeenShown = true
+        cards[indexOfSecondChosenCard!].hasBeenShown = true
+    }
+
     private mutating func unsetChosenCards() {
         indexOfFirstChosenCard = nil
         indexOfSecondChosenCard = nil
@@ -72,6 +93,7 @@ struct MemoryGame<CardContent> where CardContent: Equatable {
     struct Card: Identifiable {
         var isFaceUp: Bool = false
         var isMatched: Bool = false
+        var hasBeenShown: Bool = false
         var content: CardContent
 
         var id: Int
