@@ -2,7 +2,7 @@ import Foundation
 
 class MemoryGame<CardContent> where CardContent: Equatable {
     private(set) var cards: [Card] = []
-    private var score: Int = 0
+    private(set) var score: Int = 0
 
     private var firstChosenCard: Card?
     private var secondChosenCard: Card?

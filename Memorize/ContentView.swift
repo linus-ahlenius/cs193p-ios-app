@@ -5,7 +5,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack{
-            topMenu
+            topBar
             ScrollView {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
                     ForEach(viewModel.cardViewModels) { card in
@@ -22,9 +22,12 @@ struct ContentView: View {
     }
 
 
-    var topMenu: some View {
+    var topBar: some View {
         HStack {
+            Text("Score: \(viewModel.score)").font(.headline)
+            Spacer()
             Text(viewModel.theme.name).font(.largeTitle)
+            Spacer()
             Button { viewModel.newGame() } label: {
                 Image(systemName: "arrow.counterclockwise").font(.largeTitle)
             }
